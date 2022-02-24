@@ -21,6 +21,7 @@ class CreateMoviesTable extends Migration
             $table->string('descripcion')->nullable();
             $table->string('url');
             $table->string('pais');
+            $table->string('trailer');
             $table->string('total_visitas');
             $table->foreignId('upload')->constrained('users')->nullable();
             $table->timestamps();
