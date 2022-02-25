@@ -229,12 +229,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
                         <div class="ads">
-                            <img src="public/Film/images/uploads/ads1.png" alt="" width="336" height="296">
+                            <img src="" alt="" width="336" height="296">
                         </div>
                         <div class="celebrities">
                             <h4 class="sb-title">Spotlight Celebrities</h4>
@@ -388,7 +388,7 @@
             <div class="row ipad-width">
                 <div class="col-md-8">
                     <div class="ads">
-                        <img src="public/Film/images/uploads/ads2.png" alt="" width="728" height="106">
+                        <img src="" alt="" width="728" height="106">
                     </div>
                     <div class="title-hd">
                         <h2>Latest news</h2>
