@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\movies;
+use App\calificacion_movie;
 use App\genero;
+use App\movies;
+use App\actores;
+use App\videos;
 
 class indexControl extends Controller
 {
@@ -12,10 +14,28 @@ class indexControl extends Controller
     {
         $movie = movies::all();
         $genero = genero::orderByRaw('rand()')->take(2)->get();
-        return view('index', ['movie' => $movie, 'genders' => $genero]);
+        $best = calificacion_movie::mejorCalificadas();
+        $actores = actores::all();
+        $videos = videos::orderByRaw('created_at DESC')->take(6)->get();
+        $response = [
+            'movie' => $movie,
+            'genders' => $genero,
+            'best' => $best,
+            'actores' => $actores,
+            'videos' => $videos
+        ];
+        return view('index', $response);
     }
     public function singleShow()
     {
         return view('movie.moviesingle');
+    }
+
+    public function prueba()
+    {
+        $all = calificacion_movie::mejorCalificadas();
+        foreach ($all as $a) {
+            return $a->titulo;
+        }
     }
 }

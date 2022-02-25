@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('title')->nullable();
             $table->string('duracion')->nullable();
             $table->string('url');
+            $table->string('portada');
             $table->foreignId('movie')->constrained('movies');
             $table->timestamps();
         });
