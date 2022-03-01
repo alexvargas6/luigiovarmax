@@ -2,11 +2,11 @@
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>Login</h3>
-        <form method="post" action="#">
+        <form method="post" action="{{ route('login') }}">
             <div class="row">
                 <label for="username">
-                    Username:
-                    <input type="text" name="username" id="username" placeholder="Hugh Jackman"
+                    E-mail:
+                    <input type="text" name="email" id="username" placeholder="Hugh@Jackman.com"
                         pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
                 </label>
             </div>
