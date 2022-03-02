@@ -9,8 +9,7 @@
                 <span></span>
             </div>
         </div>
-        <a href="index-2.html"><img class="logo" src="{{ asset('images/logo.svg') }}" alt="" width="119"
-                height="58"></a>
+        <a href="index-2.html"><img class="logo" src="{{ asset('images/logo.svg') }}" alt="" width="119" height="58"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -34,8 +33,7 @@
                 </a>
                 <ul class="dropdown-menu level1">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movie grid<i
-                                class="ion-ios-arrow-forward"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movie grid<i class="ion-ios-arrow-forward"></i></a>
                         <ul class="dropdown-menu level2">
                             <li><a href="moviegrid.html">Movie grid</a></li>
                             <li><a href="moviegridfw.html">movie grid full width</a></li>
@@ -91,8 +89,12 @@
                 </ul>
             </li>
             <li><a href="#">Help</a></li>
+            @if (Auth::guest())
             <li class="loginLink"><a href="#">LOG In</a></li>
             <li class="btn signupLink"><a href="#">sign up</a></li>
+            @else
+            <li><a href="#">MI PERFIL</a></li>
+            @endif
         </ul>
     </div>
     <!-- /.navbar-collapse -->

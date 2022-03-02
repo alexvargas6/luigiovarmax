@@ -18,6 +18,7 @@ class CreateActoresTable extends Migration
             $table->string('nombre');
             $table->date('fecha');
             $table->string('nacionalidad');
+            $table->string('foto');
             $table->timestamps();
         });
     }

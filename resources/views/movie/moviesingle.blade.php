@@ -33,7 +33,7 @@
                              <div class="btn-transform transform-vertical">
                                  <div><a href="#" class="item item-1 yellowbtn"> <i class="ion-card"></i> Ver
                                          pelicula</a></div>
-                                 <div><a href="#" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+                                 <div><a href="https://uqload.org/embed-zr2wh6er47gz.html" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
                              </div>
                          </div>
                      </div>

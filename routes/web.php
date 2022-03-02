@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'indexControl@indexShow')->name('menu');
 Route::get('/movie', 'indexControl@singleShow')->name('movieSingle');
-Route::get('/prueba', 'indexControl@prueba'); 
+Route::get('/prueba', 'indexControl@prueba');
 
 Route::group(['prefix' => 'administrar'], function () {
     Route::get('/upload', 'uploadControl@uploadShow')->name('uploadShow');
     Route::post('/upload/store', 'uploadControl@storeMovie')->name('storeVideo');
-}); 
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect('/');
+})->name('home');
