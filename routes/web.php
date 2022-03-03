@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'indexControl@indexShow')->name('menu');
-Route::get('/movie', 'indexControl@singleShow')->name('movieSingle');
+Route::get('/movie/{id?}', 'indexControl@singleShow')->name('movieSingle');
 Route::get('/prueba', 'indexControl@prueba');
 
 Route::group(['prefix' => 'administrar'], function () {

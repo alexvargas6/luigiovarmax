@@ -26,9 +26,13 @@ class indexControl extends Controller
         ];
         return view('index', $response);
     }
-    public function singleShow()
+    public function singleShow($id)
     {
-        return view('movie.moviesingle');
+        $movie = movies::find($id);
+        if ($movie == null) {
+            return redirect('/');
+        }
+        return view('movie.moviesingle', ['movie' => $movie]);
     }
 
     public function prueba()
