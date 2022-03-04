@@ -30,4 +30,9 @@ class movies extends Model
     {
         return $this->hasMany('App\calificacion_movie', 'movie', 'id');
     }
+
+    public function getAlldir()
+    {
+        return $this->hasMany('App\director_movie', 'idmovie', 'id');
+    }
 }

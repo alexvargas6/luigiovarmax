@@ -16,10 +16,10 @@ class calificacion_movie extends Model
             ->orderByDesc('promedio')
             ->limit(9)
             ->get();
-        /*$consulta = "SELECT *, avg(calificacion) calificacion 
+        /*$consulta = "SELECT *, avg(calificacion) calificacion
         FROM calificacion_movies as cm
         inner join movies as m on m.id=cm.movie
-        GROUP BY cm.movie 
+        GROUP BY cm.movie
         order by cm.calificacion DESC LIMIT 9;";*/
         //$resp = DB::select($consulta)->get();
         return  $videos;
@@ -35,5 +35,10 @@ class calificacion_movie extends Model
         $consulta = "SELECT * FROM movies WHERE id =" . $id . ";";
         $resp = DB::select($consulta);
         return $resp;
+    }
+
+    public function getUsuario()
+    {
+        return $this->belongsTo('App\User', 'usuario', 'id');
     }
 }
