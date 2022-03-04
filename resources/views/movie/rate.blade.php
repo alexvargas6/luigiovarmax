@@ -6,7 +6,7 @@
         </p>
     </div>
     <div class="rate-star">
-        <p>Rate This Movie: </p>
+        <p>Calificación promedio: </p>
         <i class="ion-ios-star"></i>
         <i class="ion-ios-star"></i>
         <i class="ion-ios-star"></i>

@@ -9,7 +9,7 @@
             <div class="mvsingle-item ov-item">
                 @foreach($movie->getFotos as $fotos)
                 <a class="img-lightbox" data-fancybox-group="gallery" href="{{ asset($fotos->imagen) }}">
-                    <img src="{{$fotos->imagen}}" alt="$fotos->titulo">
+                    <img src="{{ asset($fotos->imagen) }}" alt="{{$fotos->titulo}}">
                 </a>
                 @endforeach
                 @foreach($movie->getVideos as $videos)

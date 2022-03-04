@@ -18,10 +18,11 @@
                         <div class="title-in">
                             <div class="cate">
                                 @foreach ($movies->getGeneros as $belic)
-                                    <span class="blue"><a href="#">{{ $belic->getGenero->nombre }}</a></span>
+                                    <span class="blue"><a
+                                            href="#">{{ $belic->getGenero->nombre }}</a></span>
                                 @endforeach
                             </div>
-                            <h6><a href="#">{{ $movies->titulo }}</a></h6>
+                            <h6><a href="{{ route('movieSingle', $movies->id) }}">{{ $movies->titulo }}</a></h6>
                             <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
                         </div>
                     </div>
