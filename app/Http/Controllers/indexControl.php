@@ -37,9 +37,8 @@ class indexControl extends Controller
 
     public function prueba()
     {
-        $all = calificacion_movie::mejorCalificadas();
-        foreach ($all as $a) {
-            return $a->titulo;
-        }
+        $all = movies::find(465);
+
+        return $all->promedioCal($all->id);
     }
 }

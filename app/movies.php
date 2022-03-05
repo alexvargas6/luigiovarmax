@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class movies extends Model
@@ -34,5 +35,14 @@ class movies extends Model
     public function getAlldir()
     {
         return $this->hasMany('App\director_movie', 'idmovie', 'id');
+    }
+
+    public function promedioCal($id)
+    {
+        //$consulta = "SELECT avg(calificacion) as prom FROM calificacion_movies where movie = 462;"
+        $promedio = DB::table('calificacion_movies')->select(DB::raw('avg(calificacion) as prom'))->where('movie', '=', $id)->get();
+        $json =  json_encode($promedio);
+        foreach ($promedio as $prom)
+            return floatval($prom->prom);
     }
 }
