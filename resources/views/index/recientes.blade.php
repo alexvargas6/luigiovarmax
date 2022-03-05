@@ -4,10 +4,10 @@
 </div>
 <div class="tabs">
     <ul class="tab-links-2">
-        <li class="active"><a href="#tab22">#Reciente</a></li>
+        <li class="active"><a href="#tab21">#Reciente</a></li>
     </ul>
     <div class="tab-content">
-        <div id="tab21" class="tab">
+        <div id="tab21" class="tab active">
             <div class="row">
                 <div class="slick-multiItem">
                     <!--slide-->
@@ -19,11 +19,13 @@
                                         height="284">
                                 </div>
                                 <div class="hvr-inner">
-                                    <a href="moviesingle.html"> Ver <i class="ion-android-arrow-dropright"></i> </a>
+                                    <a href="{{ route('movieSingle', $movie->id) }}"> Ver <i class="ion-android-arrow-dropright"></i> </a>
                                 </div>
                                 <div class="title-in">
                                     <h6><a href="#">{{ $movies->titulo }}</a></h6>
-                                    <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+                                    <p><i
+                                            class="ion-android-star"></i><span>{{ $movie->promedioCal($movie->id) }}</span>
+                                        /10</p>
                                 </div>
                             </div>
                         </div>

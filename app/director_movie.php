@@ -10,4 +10,9 @@ class director_movie extends Model
     {
         return $this->belongsTo('App\director', 'iddirector', 'id');
     }
+    
+    public function getPeli()
+    {
+        return $this->belongsTo('App\movies', 'idmovie', 'id');
+    }
 }

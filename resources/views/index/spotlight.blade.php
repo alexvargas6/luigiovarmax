@@ -7,7 +7,7 @@
             <h4 class="sb-title">Spotlight Actores</h4>
             @foreach ($actores->take(5) as $actor)
                 <div class="celeb-item">
-                    <a href="#"><img src="{{ $actor->foto }}" alt="" width="70" height="70"></a>
+                    <a href="#"><img src="{{ $actor->foto }}" alt="{{$actor->nombre}}" width="70" height="70"></a>
                     <div class="celeb-author">
                         <h6><a href="#">{{ $actor->nombre }}</a></h6>
                         <span>Actor</span>

@@ -10,4 +10,9 @@ class actores_movie extends Model
     {
         return $this->belongsTo(actores::class, 'idactor', 'id');
     }
+
+    public function getMovie()
+    {
+        return $this->belongsTo(movies::class, 'idmovie', 'id');
+    }
 }

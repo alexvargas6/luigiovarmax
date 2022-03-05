@@ -18,15 +18,10 @@
             </div>
         @endif
         <!-- modal -->
+
         @include('upload.modalUpload')
-        @include('upload.actorModal')
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Añadir movie
-        </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#actrizModal">
-            Añadir actor
-        </button>
+
         <hr>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -47,6 +42,7 @@
                                 <th>Total vistas</th>
                                 <th>Subido</th>
                                 <th>Trailer</th>
+
                             </tr>
                         </thead>
                         <tfoot>
@@ -60,13 +56,15 @@
                                 <th>Total vistas</th>
                                 <th>Subido</th>
                                 <th>Trailer</th>
+
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach ($movies as $mov)
                                 <tr>
                                     <td>{{ $mov->titulo }}</td>
-                                    <td>{{ $mov->portada }}</td>
+                                    <td><img src="{{ asset($mov->portada) }}" alt="{{ $mov->titulo }}" width="70">
+                                    </td>
                                     <td>{{ $mov->duracion }}</td>
                                     <td>{{ $mov->descripcion }}</td>
                                     <td>{{ $mov->url }}</td>
@@ -74,7 +72,6 @@
                                     <td>{{ $mov->total_visitas }}</td>
                                     <td>{{ $mov->upload }}</td>
                                     <td>{{ $mov->trailer }}</td>
-                                </tr>
                             @endforeach
                         </tbody>
                     </table>

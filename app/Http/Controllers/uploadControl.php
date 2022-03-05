@@ -3,15 +3,190 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\actores_movie;
 use App\movies;
+use App\actores;
+use App\director;
+use App\director_movie;
+use DB;
 use Validator;
 
 class uploadControl extends Controller
 {
+
+    public function storeDir(Request $request)
+    {
+        $rules = [
+            'nombre' => 'required|max:255',
+            'fecha' => 'required',
+            'nacionalidad' => 'required|max:255'
+        ];
+        $messages = [
+            'fecha.required' => 'SE REQUIERE LA FECHA',
+            'nombre.required' => 'SE REQUIERE EL NOMBRE',
+            'nombre.max' => 'EL NOMBRE ES MUY LARGO',
+            'nacionalidad.required' => 'SE REQUIERE LA NACIONALIDAD',
+            'nacionalidad.max' => 'EL TEXTO ES MUY LARGO'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        try {
+            $director = new director();
+            $director->nombre = $request->nombre;
+            $director->fecha = $request->fecha;
+            $director->nacionalidad = $request->nacionalidad;
+            $director->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('ERROR', $e);
+        }
+        return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
+    }
+
     public function uploadShow()
     {
+        $actor = actores::all();
         $movies = movies::all();
-        return view('upload.upload', ['movies' => $movies]);
+        return view('upload.upload', ['movies' => $movies, 'actor' => $actor]);
+    }
+
+    public function actorShow()
+    {
+        $actor = actores::all();
+        return view('administrador.actor', ['actor' => $actor]);
+    }
+
+    public function actMovShow()
+    {
+        $actor = actores::all();
+        $actMov = actores_movie::all();
+        $movies = movies::all();
+        return view('administrador.relacionarActorPelicula', ['acmov' => $actMov, 'actor' => $actor, 'movies' => $movies]);
+    }
+
+    public function dirShow()
+    {
+        $dir = director::all();
+        return view('administrador.director', ['dir' => $dir]);
+    }
+
+    public function dirMoviStr(Request $request)
+    {
+        $idmov = "";
+        $iddir = "";
+        $rules = [
+            'director' => 'required',
+            'movie' => 'required'
+        ];
+        $messages = [
+            'director.required' => 'SE REQUIERE EL ID',
+            'movie.required' => 'SE REQUIERE EL ID'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        $idmov = $request->movie;
+        $iddir = $request->director;
+
+        $consulta = "SELECT * FROM director_movies WHERE idmovie =" . $idmov . " AND iddirector =" . $iddir . ";";
+
+        $resp = DB::select($consulta);
+
+        if ($resp == null) {
+            try {
+                $dirMov = new director_movie();
+                $dirMov->idmovie = $idmov;
+                $dirMov->iddirector = $iddir;
+                $dirMov->save();
+                return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('ERROR', $e);
+            }
+        } else {
+            return redirect()->back()->with('ERROR', "Ya existe esa relación");
+        }
+    }
+
+    public function actorMovStore(Request $request)
+    {
+        $idmov = "";
+        $idact = "";
+        $rules = [
+            'actor' => 'required',
+            'movie' => 'required'
+        ];
+        $messages = [
+            'actor.required' => 'SE REQUIERE EL ID',
+            'movie.required' => 'SE REQUIERE EL ID'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        $idmov = $request->movie;
+        $idact = $request->actor;
+
+        $consulta = "SELECT * FROM actores_movies WHERE idmovie =" . $idmov . " AND idactor =" . $idact . ";";
+
+        $resp = DB::select($consulta);
+
+        if ($resp == null) {
+            try {
+                $am = new actores_movie();
+                $am->idmovie = $idmov;
+                $am->idactor = $idact;
+                $am->save();
+                return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('ERROR', $e);
+            }
+        } else {
+            return redirect()->back()->with('ERROR', "Ya existe esa relación");
+        }
+    }
+
+    public function storeActor(Request $request)
+    {
+        $rules = [
+            'nombre' => 'required|max:255',
+            'foto' => 'required|max:255',
+            'nacionalidad' => 'max:255'
+        ];
+        $messages = [
+            'foto.required' => 'SE REQUIERE LA URL',
+            'foto.max' => 'LA URL ES MUY LARGA',
+            'nombre.required' => 'SE REQUIERE EL NOMBRE',
+            'nombre.max' => 'EL NOMBRE ES MUY LARGO',
+            'nacionalidad.required' => 'SE REQUIERE LA NACIONALIDAD',
+            'nacionalidad.max' => 'EL TEXTO ES MUY LARGO'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        try {
+            $actor = new actores();
+            $actor->nombre = $request->nombre;
+            $actor->fecha = $request->fecha;
+            $actor->nacionalidad = $request->nacionalidad;
+            $actor->foto = $request->foto;
+            $actor->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('ERROR', $e);
+        }
+        return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
     }
 
     public function storeMovie(Request $request)
@@ -52,5 +227,13 @@ class uploadControl extends Controller
             return redirect()->back()->with('ERROR', $e);
         }
         return redirect()->back()->with('success', 'SE AGREGO LA PELICULA DE MANERA CORRECTA');
+    }
+
+    public function showDirMovie()
+    {
+        $director = director::all();
+        $movies = movies::all();
+        $dirMov = director_movie::all();
+        return view('administrador.relacionarDirectorPelicula', ['dirMov' => $dirMov, 'movies' => $movies, 'director' => $director]);
     }
 }

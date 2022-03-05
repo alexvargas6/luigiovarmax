@@ -20,12 +20,15 @@
                                     <img src="{{ $mov->portada }}" alt="" width="185" height="284">
                                 </div>
                                 <div class="hvr-inner">
-                                    <a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i>
+                                    <a href="{{ route('movieSingle', $movie->id) }}"> VER <i
+                                            class="ion-android-arrow-dropright"></i>
                                     </a>
                                 </div>
                                 <div class="title-in">
                                     <h6><a href="#">{{ $mov->titulo }}</a></h6>
-                                    <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+                                    <p><i
+                                            class="ion-android-star"></i><span>{{ $movie->promedioCal($movie->id) }}</span>
+                                        /10</p>
                                 </div>
                             </div>
                         </div>
