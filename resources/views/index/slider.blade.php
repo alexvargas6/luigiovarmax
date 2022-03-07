@@ -23,7 +23,7 @@
                                 @endforeach
                             </div>
                             <h6><a href="{{ route('movieSingle', $movies->id) }}">{{ $movies->titulo }}</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ $movie->promedioCal($movie->id) }}</span> /10
+                            <p><i class="ion-android-star"></i><span>{{ $movies->promedioCal($movies->id) }}</span> /10
                             </p>
                         </div>
                     </div>

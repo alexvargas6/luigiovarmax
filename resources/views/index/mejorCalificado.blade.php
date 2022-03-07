@@ -17,17 +17,16 @@
                         <div class="slide-it">
                             <div class="movie-item">
                                 <div class="mv-img">
-                                    <img src="{{ $mov->portada }}" alt="" width="185" height="284">
+                                    <img src="{{ $mov->portada }}" alt="portada" width="185" height="284">
                                 </div>
                                 <div class="hvr-inner">
-                                    <a href="{{ route('movieSingle', $movie->id) }}"> VER <i
+                                    <a href="{{ route('movieSingle', $mov->id) }}"> VER <i
                                             class="ion-android-arrow-dropright"></i>
                                     </a>
                                 </div>
                                 <div class="title-in">
                                     <h6><a href="#">{{ $mov->titulo }}</a></h6>
-                                    <p><i
-                                            class="ion-android-star"></i><span>{{ $movie->promedioCal($movie->id) }}</span>
+                                    <p><i class="ion-android-star"></i><span></span>
                                         /10</p>
                                 </div>
                             </div>

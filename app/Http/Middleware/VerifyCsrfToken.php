@@ -16,6 +16,8 @@ class VerifyCsrfToken extends Middleware
         'administrar/upload/actor',
         'administrar/upload/actor/pelicula/store',
         'administrar/upload/director',
-        'administrar/upload/director/pelicula/store'
+        'administrar/upload/director/pelicula/store',
+        'us/bloquear',
+        'us/nivel'
     ];
 }

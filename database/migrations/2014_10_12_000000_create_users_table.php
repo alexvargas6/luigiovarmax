@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Auth\User;
 
 class CreateUsersTable extends Migration
 {
@@ -25,6 +26,19 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        $this->postCreate();
+    }
+
+    //Default user
+    private function postCreate()
+    {
+        $model = new User();
+        $model->setAttribute('name', "admin");
+        $model->setAttribute('email', "admin@gmail.com");
+        $model->setAttribute('password', Hash::make("admin123"));
+        $model->setAttribute('nivel', 1);
+        $model->setAttribute('bloqueado', 0);
+        $model->save();
     }
 
     /**

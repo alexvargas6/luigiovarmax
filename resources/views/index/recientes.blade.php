@@ -19,12 +19,12 @@
                                         height="284">
                                 </div>
                                 <div class="hvr-inner">
-                                    <a href="{{ route('movieSingle', $movie->id) }}"> Ver <i class="ion-android-arrow-dropright"></i> </a>
+                                    <a href="{{ route('movieSingle', $movies->id) }}"> Ver <i class="ion-android-arrow-dropright"></i> </a>
                                 </div>
                                 <div class="title-in">
                                     <h6><a href="#">{{ $movies->titulo }}</a></h6>
                                     <p><i
-                                            class="ion-android-star"></i><span>{{ $movie->promedioCal($movie->id) }}</span>
+                                            class="ion-android-star"></i><span>{{ $movies->promedioCal($movies->id) }}</span>
                                         /10</p>
                                 </div>
                             </div>

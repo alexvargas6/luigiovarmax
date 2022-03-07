@@ -21,7 +21,9 @@
 
         @include('upload.modalUpload')
         <!-- Button trigger modal -->
-
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#movieModal">
+            Añadir pelicula
+        </button>
         <hr>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">

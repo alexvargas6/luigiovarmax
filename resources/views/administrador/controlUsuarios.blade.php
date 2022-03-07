@@ -1,6 +1,4 @@
 @extends('administrador.navbarAdmin')
-
-
 @section('content')
     <div class="container-fluid">
         @if (\Session::has('success'))
@@ -17,7 +15,8 @@
                 </ul>
             </div>
         @endif
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+        @include('upload.modalCUsuario')
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usModalLvl">
             Asignar nivel
         </button>
         <hr>
@@ -31,6 +30,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>FOTO</th>
                                 <th>NOMBRE</th>
                                 <th>EMAIL</th>
@@ -38,11 +38,12 @@
                                 <th>Bloqueado?</th>
                                 <th>CREADO EN</th>
                                 <th>EDITADO</th>
-
+                                <th>BLOQUEADO</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>ID</th>
                                 <th>FOTO</th>
                                 <th>NOMBRE</th>
                                 <th>EMAIL</th>
@@ -50,12 +51,13 @@
                                 <th>Bloqueado?</th>
                                 <th>CREADO EN</th>
                                 <th>EDITADO</th>
-
+                                <th>BLOQUEADO</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach ($user as $us)
                                 <tr>
+                                    <td>{{ $us->id }}</td>
                                     <td>
                                         <img src="{{ asset($us->foto) }}" alt="{{ $us->nombre }}" width="70">
                                     </td>
@@ -73,6 +75,14 @@
                                     </td>
                                     <td>{{ $us->created_at }}</td>
                                     <td>{{ $us->updated_at }}</td>
+                                    <td>
+                                        <form action="{{ route('bloquear') }}" method="post">
+                                            <input class="form-control form-control-lg" type="hidden"
+                                                placeholder="ESCRIBE EL ID DEL USUARIO"
+                                                aria-label=".form-control-lg example" name="id" value="{{ $us->id }}">
+                                            <button type="submit" class="btn btn-primary">Bloquear</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -32,6 +32,9 @@ Route::group(['prefix' => 'administrar'], function () {
 
 Route::group(['prefix' => 'us'], function () {
     Route::get('/user', 'userControl@controlUsShow')->name('showCUser');
+    Route::post('/bloquear', 'userControl@bloqUs')->name('bloquear');
+    Route::post('/nivel', 'userControl@cambiarLvl')->name('cambiarNivel');
+    Route::post('/nivel/store', 'userControl@nivelStore')->name('addLvl');
 });
 
 Auth::routes();
