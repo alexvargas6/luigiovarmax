@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('bloqueado');
             $table->string('password');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('sobremi')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,8 +8,10 @@ use App\movies;
 use App\actores;
 use App\director;
 use App\director_movie;
+use App\genero_movie;
 use DB;
 use Validator;
+use App\genero;
 
 class uploadControl extends Controller
 {
@@ -17,6 +19,39 @@ class uploadControl extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function categoriaShow()
+    {
+        $genero = genero::all();
+        return view('administrador.categoriasControl', ['genero' => $genero]);
+    }
+
+    public function categoriaStore(Request $request)
+    {
+        $rules = [
+            'nombre' => 'required|max:255'
+        ];
+
+        $messages = [
+            'nombre.required' => 'SE REQUIERE EL NOMBRE',
+            'nombre.max' => 'EL NOMBRE ES MUY LARGO'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+
+        try {
+            $genero = new genero();
+            $genero->nombre = $request->nombre;
+            $genero->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('ERROR', $e);
+        }
+        return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
     }
 
     public function storeDir(Request $request)
@@ -76,6 +111,49 @@ class uploadControl extends Controller
     {
         $dir = director::all();
         return view('administrador.director', ['dir' => $dir]);
+    }
+
+    public function catMovStore(Request $request)
+    { 
+        $idmov = "";
+        $idgen = "";
+
+        $rules = [
+            'genero' => 'required',
+            'movie' => 'required'
+        ];
+
+        $messages = [
+            'genero.required' => 'SE REQUIERE EL ID',
+            'movie.required' => 'SE REQUIERE EL ID'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+
+        $idmov = $request->movie;
+        $idgen = $request->genero;
+
+        $consulta = "SELECT * FROM genero_movies WHERE idmovie =" . $idmov . " AND idgenero = " . $idgen . ";";
+
+        $resp = DB::select($consulta);
+        if ($resp == null) {
+
+            try {
+                $dm = new genero_movie();
+                $dm->idmovie = $idmov;
+                $dm->idgenero = $idgen;
+                $dm->save();
+                return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('ERROR', $e);
+            }
+        } else {
+            return redirect()->back()->with('ERROR', "Ya existe esa relación");
+        }
     }
 
     public function dirMoviStr(Request $request)

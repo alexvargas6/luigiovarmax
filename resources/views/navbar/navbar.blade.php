@@ -9,7 +9,8 @@
                 <span></span>
             </div>
         </div>
-        <a href="index-2.html"><img class="logo" src="{{ asset('images/logo.svg') }}" alt="" width="119" height="58"></a>
+        <a href="{{ route('menu') }}"><img class="logo" src="{{ asset('images/logo.svg') }}" alt=""
+                width="119" height="58"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -90,13 +91,14 @@
             </li>-->
             <!--<li><a href="#">Help</a></li>-->
             @if (Auth::guest())
-            <li class="loginLink"><a href="#">LOG In</a></li>
-            <li class="btn signupLink"><a href="#">sign up</a></li>
+                <li class="loginLink"><a href="#">LOG In</a></li>
+                <li class="btn signupLink"><a href="#">sign up</a></li>
             @else
-            <li><a href="#">{{auth()->user()->name}} <img class="img-circle" src="{{asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"></a></li>
-            @if (auth()->user()->nivel == 1)
-            <li class="btn"><a href="{{route('uploadShow')}}">ADMINISTRAR</a></li>
-            @endif
+                <li><a href="#">{{ auth()->user()->name }} <img class="img-circle"
+                            src="{{ asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"></a></li>
+                @if (auth()->user()->nivel == 1)
+                    <li class="btn"><a href="{{ route('uploadShow') }}">ADMINISTRAR</a></li>
+                @endif
             @endif
         </ul>
     </div>

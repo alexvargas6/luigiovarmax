@@ -1,6 +1,6 @@
 <div class="title-hd">
     <h2>Recientes</h2>
-    <a href="#" class="viewall">Ver todo <i class="ion-ios-arrow-right"></i></a>
+    <a href="{{ route('morRe') }}" class="viewall">Ver todo <i class="ion-ios-arrow-right"></i></a>
 </div>
 <div class="tabs">
     <ul class="tab-links-2">
@@ -19,7 +19,8 @@
                                         height="284">
                                 </div>
                                 <div class="hvr-inner">
-                                    <a href="{{ route('movieSingle', $movies->id) }}"> Ver <i class="ion-android-arrow-dropright"></i> </a>
+                                    <a href="{{ route('movieSingle', $movies->id) }}"> Ver <i
+                                            class="ion-android-arrow-dropright"></i> </a>
                                 </div>
                                 <div class="title-in">
                                     <h6><a href="#">{{ $movies->titulo }}</a></h6>

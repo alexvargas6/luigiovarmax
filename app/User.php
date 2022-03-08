@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\nivel', 'nivel', 'id');
     }
+
+    public function getLikes()
+    {
+        return $this->hasMany('App\like_movie', 'idusuario', 'id');
+    }
 }

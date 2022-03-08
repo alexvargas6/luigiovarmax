@@ -1,6 +1,6 @@
 <div class="title-hd">
     <h2>Mejor calificadas</h2>
-    <a href="#" class="viewall">Ver todo <i class="ion-ios-arrow-right"></i></a>
+    <a href="{{ route('morRe') }}" class="viewall">Ver todo <i class="ion-ios-arrow-right"></i></a>
 </div>
 <div class="tabs">
     <ul class="tab-links">
@@ -25,7 +25,7 @@
                                     </a>
                                 </div>
                                 <div class="title-in">
-                                    <h6><a href="#">{{ $mov->titulo }}</a></h6>
+                                    <h6><a href="{{ route('movieSingle', $mov->id) }}">{{ $mov->titulo }}</a></h6>
                                     <p><i class="ion-android-star"></i><span></span>
                                         /10</p>
                                 </div>

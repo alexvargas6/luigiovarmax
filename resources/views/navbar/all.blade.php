@@ -10,7 +10,7 @@
 
 <head>
     <!-- Basic need -->
-    <title>peli | @yield('titulo')</title>
+    <title>LGVM | @yield('titulo')</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -70,13 +70,16 @@
         <div class="container">
             @include('navbar.navbar')
             <!-- top search form -->
-            <div class="top-search">
-                <select>
-                    <option value="united">TV show</option>
-                    <option value="saab">Others</option>
-                </select>
-                <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-            </div>
+            <form method="post" action="{{ route('accionBusq') }}">
+                <div class="top-search">
+                    <select>
+                        <option value="united">Peliculas</option>
+                        <option value="saab">Aquí solo peliculas</option>
+                    </select>
+                    <input type="text" placeholder="Busc..." name="parametro">
+                    <input type="submit" value=" ">
+                </div>
+            </form>
         </div>
     </header>
     <!-- END | Header -->
