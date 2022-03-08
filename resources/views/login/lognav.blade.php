@@ -3,17 +3,18 @@
         <a href="#" class="close">x</a>
         <h3>Login</h3>
         <form method="post" action="{{ route('login') }}">
+        @csrf
             <div class="row">
                 <label for="username">
                     E-mail:
-                    <input type="text" name="email" id="username" placeholder="Hugh@Jackman.com" required="required" />
+                    <input type="email" name="email" id="email" placeholder="Hugh@Jackman.com" required="required" />
                 </label>
             </div>
 
             <div class="row">
                 <label for="password">
                     Password:
-                    <input type="password" name="password" id="password" placeholder="******" required="required" />
+                    <input type="password" name="password" id="password" placeholder="******" required="required" required autocomplete="current-password" />
                 </label>
             </div>
             <div class="row">
@@ -21,19 +22,19 @@
                     <div>
                         <input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
                     </div>
-                    <a href="#">Forget password ?</a>
+                   <!-- <a href="#">Forget password ?</a>-->
                 </div>
             </div>
             <div class="row">
                 <button type="submit">Login</button>
             </div>
         </form>
-        <div class="row">
+        <!--<div class="row">
             <p>Or via social</p>
             <div class="social-btn-2">
                 <a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
                 <a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>

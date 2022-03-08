@@ -6833,7 +6833,7 @@ ul {
 }
 
 .page-single {
-    background-color: #020d18;
+    background-color: #FF9481;
     padding: 75px 0;
 }
 
@@ -9132,7 +9132,7 @@ header {
 
 @media (max-width: 991px) {
     header {
-        background-color: #0f2133;
+        background-color: radial-gradient(circle, rgba(198, 43, 42, 0.8855917366946778) 0%, rgba(255, 148, 129, 0.8827906162464986) 100%);
     }
 }
 

@@ -18,11 +18,9 @@ class userControl extends Controller
     public function nivelStore(Request $request)
     {
         $rules = [
-            'nivel' => 'required|max:255',
             'titulonivel' => 'required|max:255'
         ];
         $messages = [
-            'nivel.required' => 'SE REQUIERE EL EL LVL',
             'titulonivel.required' => 'SE REQUIERE EL TITULO',
             'titulonivel.max' => 'EL TITULO ES MUY LARGO'
         ];
@@ -36,7 +34,7 @@ class userControl extends Controller
 
         try {
             $nivel = new nivel();
-            $nivel->nivel = $request->nivel;
+            $nivel->nivel = 1432;
             $nivel->titulonivel = $request->titulonivel;
             $nivel->save();
         } catch (\Exception $e) {
