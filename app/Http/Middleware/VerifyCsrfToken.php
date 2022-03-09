@@ -23,6 +23,8 @@ class VerifyCsrfToken extends Middleware
         'administrar/upload/categoria/store',
         'administrar/upload/categoria/movie/store',
         'busqueda/buscar/accion',
-        'busqueda/lomas'
+        'busqueda/lomas',
+        'us/update/usuario',
+        'us/update/foto'
     ];
 }

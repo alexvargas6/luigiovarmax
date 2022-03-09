@@ -1,75 +1,41 @@
 @extends('profile.myPerfil')
 @section('perfil')
-    <div class="form-style-1 user-pro" action="#">
-        <form action="#" class="user">
-            <h4>01. Profile details</h4>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>Username</label>
-                    <input type="text" placeholder="edwardkennedy">
-                </div>
-                <div class="col-md-6 form-it">
-                    <label>Email Address</label>
-                    <input type="text" placeholder="edward@kennedy.com">
-                </div>
+<div class="form-style-1 user-pro" action="#">
+    <form action="{{route('upUs')}}" class="user" method="post">
+        <input name="id" value="{{$usuario->id}}" type="hidden">
+        <h4>01. Profile details</h4>
+        <div class="row">
+            <div class="col-md-6 form-it">
+                <label>Username</label>
+                <input type="text" placeholder="edwardkennedy" value="{{$usuario->name}}" disabled>
             </div>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>First Name</label>
-                    <input type="text" placeholder="Edward ">
-                </div>
-                <div class="col-md-6 form-it">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Kennedy">
-                </div>
+            <div class="col-md-6 form-it">
+                <label>Email Address</label>
+                <input type="text" placeholder="edward@kennedy.com" value="{{$usuario->email}}" disabled>
             </div>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>Country</label>
-                    <select>
-                        <option value="united">United States</option>
-                        <option value="saab">Others</option>
-                    </select>
-                </div>
-                <div class="col-md-6 form-it">
-                    <label>State</label>
-                    <select>
-                        <option value="united">New York</option>
-                        <option value="saab">Others</option>
-                    </select>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-it">
+                <label>Facebook Link</label>
+                <input type="text" placeholder="Pega aquí el link de tu facebook " name="facebook" value="{{$usuario->facebook}}">
             </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <input class="submit" type="submit" value="save">
-                </div>
+            <div class="col-md-6 form-it">
+                <label>Instagram Link</label>
+                <input type="text" placeholder="Pega el link de tu insta" name="instagram" value="{{$usuario->instagram}}">
             </div>
-        </form>
-        <form action="#" class="password">
-            <h4>02. Change password</h4>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>Old Password</label>
-                    <input type="text" placeholder="**********">
-                </div>
+        </div>
+        <div class="row">
+            <div class="form-it">
+                <label>SOBRE MÍ</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="sobremi" rows="3">{{$usuario->sobremi}}</textarea>
             </div>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>New Password</label>
-                    <input type="text" placeholder="***************">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <input class="submit" type="submit" value="save">
             </div>
-            <div class="row">
-                <div class="col-md-6 form-it">
-                    <label>Confirm New Password</label>
-                    <input type="text" placeholder="*************** ">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <input class="submit" type="submit" value="change">
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
+
+</div>
 @endsection

@@ -47,6 +47,8 @@ Route::group(['prefix' => 'us'], function () {
     Route::get('/perfil/{id?}', 'perfilControl@perfilShow')->name('perfil');
     Route::get('/favorites', 'perfilControl@favoritProfile')->name('perfilFav');
     Route::get('/single/{id?}', 'perfilControl@singleProfile')->name('single');
+    Route::post('/update/usuario', 'perfilControl@updateProfile')->name('upUs');
+    Route::post('/update/foto', 'perfilControl@fotoChange')->name('upFoto');
 });
 
 Auth::routes();

@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row ipad-width">
             <div class="col-md-8">
-                <div class="ads">
+                <!--<div class="ads">
                     <img src="" alt="" width="728" height="106">
-                </div>
+                </div>-->
                 <div class="title-hd">
-                    <h2>Latest news</h2>
+                    <h2>PROXIMAMENTE!!!</h2>
                 </div>
                 <div class="tabs">
                     <ul class="tab-links-3">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="morenew">
                     <div class="title-hd">
-                        <h3>More news on Blockbuster</h3>
+                        <h3>Otras entradas</h3>
                         <a href="#" class="viewall">See all Movies news<i class="ion-ios-arrow-right"></i></a>
                     </div>
                     <div class="more-items">

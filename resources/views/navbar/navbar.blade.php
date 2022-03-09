@@ -9,8 +9,7 @@
                 <span></span>
             </div>
         </div>
-        <a href="{{ route('menu') }}"><img class="logo" src="{{ asset('images/logo.svg') }}" alt=""
-                width="119" height="58"></a>
+        <a href="{{ route('menu') }}"><img class="logo" src="{{ asset('images/logo.svg') }}" alt="" width="119" height="58"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -91,14 +90,24 @@
             </li>-->
             <!--<li><a href="#">Help</a></li>-->
             @if (Auth::guest())
-                <li class="loginLink"><a href="#">LOG In</a></li>
-                <li class="btn signupLink"><a href="#">sign up</a></li>
+            <li class="loginLink"><a href="#">LOG In</a></li>
+            <li class="btn signupLink"><a href="#">sign up</a></li>
             @else
-                <li><a href="#">{{ auth()->user()->name }} <img class="img-circle"
-                            src="{{ asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"></a></li>
-                @if (auth()->user()->nivel == 1)
-                    <li class="btn"><a href="{{ route('uploadShow') }}">ADMINISTRAR</a></li>
-                @endif
+            <li><a href="{{route('single',auth()->user())}}">{{ auth()->user()->name }} <img width="100" height="100" class="img-circle" src="{{ asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"></a></li>
+            <li class="dropdown first">
+                <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                    OPCIONES <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu level1">
+                    <li><a href="#" data-toggle="modal" data-target="#logoutModal">CERRAR SESIÓN</a></li>
+
+                </ul>
+            </li>
+            @include('administrador.nav.logoutNavModal')
+            <!--<li><a href="#">Help</a></li>-->
+            @if (auth()->user()->nivel == 1)
+            <li class="btn"><a href="{{ route('uploadShow') }}">ADMINISTRAR</a></li>
+            @endif
             @endif
         </ul>
     </div>
