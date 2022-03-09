@@ -12,23 +12,25 @@ use App\genero_movie;
 use DB;
 use Validator;
 use App\genero;
+use App\imagene;
+use App\videos;
 
-class uploadControl extends Controller
-{
+class uploadControl extends Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
-    public function categoriaShow()
-    {
-        $genero = genero::all();
-        return view('administrador.categoriasControl', ['genero' => $genero]);
+    public function categoriaShow() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4) {
+            $genero = genero::all();
+            return view('administrador.categoriasControl', ['genero' => $genero]);
+        } else {
+            return redirect("/");
+        }
     }
 
-    public function categoriaStore(Request $request)
-    {
+    public function categoriaStore(Request $request) {
         $rules = [
             'nombre' => 'required|max:255'
         ];
@@ -54,8 +56,7 @@ class uploadControl extends Controller
         return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
     }
 
-    public function storeDir(Request $request)
-    {
+    public function storeDir(Request $request) {
         $rules = [
             'nombre' => 'required|max:255',
             'fecha' => 'required',
@@ -86,35 +87,46 @@ class uploadControl extends Controller
         return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
     }
 
-    public function uploadShow()
-    {
-        $actor = actores::all();
-        $movies = movies::all();
-        return view('upload.upload', ['movies' => $movies, 'actor' => $actor]);
+    public function uploadShow() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4 || auth()->user()->nivel == 3) {
+            $actor = actores::all();
+            $movies = movies::all();
+            return view('upload.upload', ['movies' => $movies, 'actor' => $actor]);
+        } else {
+            return redirect("/");
+        }
     }
 
-    public function actorShow()
-    {
-        $actor = actores::all();
-        return view('administrador.actor', ['actor' => $actor]);
+    public function actorShow() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4) {
+            $actor = actores::all();
+            return view('administrador.actor', ['actor' => $actor]);
+        } else {
+            return redirect("/");
+        }
     }
 
-    public function actMovShow()
-    {
-        $actor = actores::all();
-        $actMov = actores_movie::all();
-        $movies = movies::all();
-        return view('administrador.relacionarActorPelicula', ['acmov' => $actMov, 'actor' => $actor, 'movies' => $movies]);
+    public function actMovShow() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4 || auth()->user()->nivel == 3) {
+            $actor = actores::all();
+            $actMov = actores_movie::all();
+            $movies = movies::all();
+            return view('administrador.relacionarActorPelicula', ['acmov' => $actMov, 'actor' => $actor, 'movies' => $movies]);
+        } else {
+            return redirect("/");
+        }
     }
 
-    public function dirShow()
-    {
-        $dir = director::all();
-        return view('administrador.director', ['dir' => $dir]);
+    public function dirShow() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4) {
+            $dir = director::all();
+            return view('administrador.director', ['dir' => $dir]);
+        } else {
+            return redirect("/");
+        }
     }
 
-    public function catMovStore(Request $request)
-    { 
+    public function catMovStore(Request $request) {
         $idmov = "";
         $idgen = "";
 
@@ -156,8 +168,7 @@ class uploadControl extends Controller
         }
     }
 
-    public function dirMoviStr(Request $request)
-    {
+    public function dirMoviStr(Request $request) {
         $idmov = "";
         $iddir = "";
         $rules = [
@@ -197,8 +208,7 @@ class uploadControl extends Controller
         }
     }
 
-    public function actorMovStore(Request $request)
-    {
+    public function actorMovStore(Request $request) {
         $idmov = "";
         $idact = "";
         $rules = [
@@ -237,8 +247,7 @@ class uploadControl extends Controller
         }
     }
 
-    public function storeActor(Request $request)
-    {
+    public function storeActor(Request $request) {
         $rules = [
             'nombre' => 'required|max:255',
             'foto' => 'required|max:255',
@@ -272,8 +281,7 @@ class uploadControl extends Controller
         return redirect()->back()->with('success', 'SE AGREGO DE MANERA CORRECTA');
     }
 
-    public function storeMovie(Request $request)
-    {
+    public function storeMovie(Request $request) {
         $rules = [
             'titulo' => 'required|max:255',
             'url' => 'required|max:255',
@@ -303,7 +311,7 @@ class uploadControl extends Controller
             $mov->url = $request->url;
             $mov->pais = $request->pais;
             $mov->total_visitas = 0;
-            $mov->upload = 1;
+            $mov->upload = auth()->user()->id;
             $mov->trailer = $request->trailer;
             $mov->save();
         } catch (\Exception $e) {
@@ -312,11 +320,94 @@ class uploadControl extends Controller
         return redirect()->back()->with('success', 'SE AGREGO LA PELICULA DE MANERA CORRECTA');
     }
 
-    public function showDirMovie()
-    {
-        $director = director::all();
-        $movies = movies::all();
-        $dirMov = director_movie::all();
-        return view('administrador.relacionarDirectorPelicula', ['dirMov' => $dirMov, 'movies' => $movies, 'director' => $director]);
+    public function showDirMovie() {
+        if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4 || auth()->user()->nivel == 3) {
+            $director = director::all();
+            $movies = movies::all();
+            $dirMov = director_movie::all();
+            return view('administrador.relacionarDirectorPelicula', ['dirMov' => $dirMov, 'movies' => $movies, 'director' => $director]);
+        } else {
+            return redirect("/");
+        }
     }
+
+    public function showMedia() {
+        $img = imagene::all();
+        $mov = movies::all();
+        return view('administrador.media', ['images' => $img, 'movies' => $mov]);
+    }
+
+    public function mediaStore(Request $request) {
+        $rules = [
+            'titulo' => 'required|max:255',
+            'imagen' => 'required|max:255',
+            'idmovie' => 'required'
+        ];
+
+        $messages = [
+            'imagen.required' => 'SE REQUIERE LA URL',
+            'imagen.max' => 'LA URL ES MUY LARGA',
+            'titulo.required' => 'SE REQUIERE EL TITULO',
+            'idmovie.required' => 'SE REQUIERE EL ID DE LA PELICULA'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        try {
+            $media = new imagene();
+            $media->imagen = $request->imagen;
+            $media->titulo = $request->titulo;
+            $media->idmovie = $request->idmovie;
+            $media->upload = auth()->user()->id;
+            $media->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('ERROR', $e);
+        }
+        return redirect()->back()->with('success', 'SE AGREGO LA IMAGEN DE MANERA CORRECTA');
+    }
+
+    public function videoStore(Request $request) {
+        $rules = [
+            'titulo' => 'required|max:255',
+            'duracion' => 'required|max:255',
+            'url' => 'required|max:255',
+            'portada' => 'required|max:255',
+            'idmovie' => 'required'
+        ];
+
+        $messages = [
+            'portada.required' => 'SE REQUIERE LA URL DE LA IMAGEN',
+            'portada.max' => 'LA URL DE LA IMAGEN ES MUY LARGA',
+            'titulo.required' => 'SE REQUIERE EL TITULO',
+            'titulo.max' => 'EL TITULO ES MUY LARGO',
+            'duracion.required' => 'LA DURACIÓN ES MUY LARGO',
+            'duracion.max' => 'LA DURACIÓN ES MUY LARGA',
+            'url.required' => 'SE REQUIERE LA URL DEL VIDEO',
+            'url.max' => 'LA URL DEL VIDEO ES MUY LARGA',
+            'idmovie.required' => 'EL ID ES MUY LARGO'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return redirect()->back()->with('ERROR', $errors);
+        }
+        try {
+            $vid = new videos();
+            $vid->title = $request->titulo;
+            $vid->duracion = $request->duracion;
+            $vid->url = $request->url;
+            $vid->movie = $request->idmovie;
+            $vid->portada = $request->portada;
+            $vid->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('ERROR', $e);
+        }
+        return redirect()->back()->with('success', 'SE AGREGO EL TRAILER DE MANERA CORRECTA');
+    }
+
 }

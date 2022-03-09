@@ -1,42 +1,3 @@
-/* ---------------- TABLE OF CONTENT ----------------------
-	-----------------------------------------------------------
-	-----------------------------------------------------------
-
-
-	0. FRAMEWORK
-
-	1. BASE
-	   1.1. BASE
-	   1.2. TYPOGRAPHY
-
-	2. COMPONENT
-	   2.1. PLUGINS
-	   2.2. COMMON
-	   2.3. MODULES
-
-	3. SKELETON
-	   3.1. PAGE
-	   3.2. HEADER
-	   3.3. FOOTER
-
-
-	-----------------------------------------------------------
-	-----------------------------------------------------------
-------------------- END TABLE OF CONTENT ------------------*/
-
-
-/* I. FRAMEWORK
-***********************/
-
-
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 
 @media print {
     *,
@@ -5281,7 +5242,7 @@ ul {
 .topbar-filter select {
     font-family: 'Nunito', sans-serif;
     font-size: 14px;
-    color: #abb7c4;
+    color: #FA2F51;
     font-weight: 300;
     text-transform: none;
 }

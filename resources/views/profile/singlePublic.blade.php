@@ -7,11 +7,11 @@ PERFIL
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <!-- <h1> movie listing - list</h1>
-                                                                                                                                        <ul class="breadcumb">
-                                                                                                                                         <li class="active"><a href="#">Home</a></li>
-                                                                                                                                         <li> <span class="ion-ios-arrow-right"></span> movie listing</li>
-                                                                                                                                        </ul> -->
+                <!--<h1> movie listing - list</h1>
+                <ul class="breadcumb">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@ PERFIL
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="movie-single-ct">
                     <h1 class="bd-hd">{{ $usuario->name }}</h1>
-                    <p class="ceb-single">{{ $usuario->getNivel }}</p>
+                    <p class="ceb-single">{{ $usuario->getNivel->titulonivel }}</p>
                     <div class="social-link cebsingle-socail">
                         <a href="{{ $usuario->facebook }}"><i class="ion-social-facebook"></i></a>
                         <a href="{{ $usuario->instagram }}"><i class="ion-social-instagram"></i></a>

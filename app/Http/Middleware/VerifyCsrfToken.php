@@ -25,6 +25,10 @@ class VerifyCsrfToken extends Middleware
         'busqueda/buscar/accion',
         'busqueda/lomas',
         'us/update/usuario',
-        'us/update/foto'
+        'us/update/foto',
+        'us/like',
+        'us/calificacion/usuario',
+        'administrar/media/foto/store',
+        'administrar/media/video/store'
     ];
 }

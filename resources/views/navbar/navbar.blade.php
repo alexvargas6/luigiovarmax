@@ -17,16 +17,16 @@
             <li class="hidden">
                 <a href="#page-top"></a>
             </li>
-            <!--<li class="dropdown first">
+            <li class="dropdown first">
                 <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-                    Home <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    Categorias <i class="fa fa-angle-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu level1">
-                    <li><a href="index-2.html">Home 01</a></li>
-                    <li><a href="homev2.html">Home 02</a></li>
-                    <li><a href="homev3.html">Home 03</a></li>
+                    @foreach($genSh as $gen)
+                    <li><a href="{{route('listaShow', $gen->nombre)}}">{{$gen->nombre}}</a></li>
+                    @endforeach
                 </ul>
-            </li>-->
+            </li>
             <!--<li class="dropdown first">
                 <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
                     movies<i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -88,24 +88,23 @@
                     <li class="it-last"><a href="comingsoon.html">Coming soon</a></li>
                 </ul>
             </li>-->
-            <!--<li><a href="#">Help</a></li>-->
+            <li><a href="{{route('dev')}}">DESARROLLADORES</a></li>
             @if (Auth::guest())
             <li class="loginLink"><a href="#">LOG In</a></li>
             <li class="btn signupLink"><a href="#">sign up</a></li>
             @else
-            <li><a href="{{route('single',auth()->user())}}">{{ auth()->user()->name }} <img width="100" height="100" class="img-circle" src="{{ asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"></a></li>
             <li class="dropdown first">
                 <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                    OPCIONES <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    {{ auth()->user()->name }} <img width="100" height="100" class="img-circle" src="{{ asset(auth()->user()->foto) }}" alt="{{ auth()->user()->name }}"><i class="fa fa-angle-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu level1">
                     <li><a href="#" data-toggle="modal" data-target="#logoutModal">CERRAR SESIÓN</a></li>
-
+                    <li><a href="{{route('single',auth()->user())}}">MI PERFIL</a></li>
                 </ul>
             </li>
             @include('administrador.nav.logoutNavModal')
             <!--<li><a href="#">Help</a></li>-->
-            @if (auth()->user()->nivel == 1)
+            @if (auth()->user()->nivel == 1 || auth()->user()->nivel == 4)
             <li class="btn"><a href="{{ route('uploadShow') }}">ADMINISTRAR</a></li>
             @endif
             @endif
