@@ -23,8 +23,7 @@ class CreateMoviesTable extends Migration
             $table->string('pais');
             $table->string('trailer');
             $table->string('total_visitas');
-            $table->string('año');
-            $table->string('bloqueo');
+            $table->string('año');            
             $table->foreignId('upload')->constrained('users')->nullable();
             $table->timestamps();
         });
