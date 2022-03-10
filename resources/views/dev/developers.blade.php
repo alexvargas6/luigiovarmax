@@ -45,7 +45,28 @@ DEVS
                     <div class="ceb-item">
                         <a href="{{route('single', 1)}}"><img width="270px" height="400px" src="{{asset('public/Film/images/uploads/ceb1.jpg')}}" alt="FOTO DE GIT"></a>
                         <div class="ceb-infor">
-                            <h2><a href="{{route('single', 1)}}">VARGAS</a></h2>
+                            <h2><a href="{{route('single', 1)}}">Vargas</a></h2>
+                            <span>DESARROLLADOR</span>
+                        </div>
+                    </div>
+                    <div class="ceb-item">
+                        <a href="{{route('single', 10)}}"><img width="270px" height="400px" src="{{asset('https://avatars.githubusercontent.com/u/72289144?v=4')}}" alt="FOTO DE GIT1"></a>
+                        <div class="ceb-infor">
+                            <h2><a href="{{route('single', 10)}}">Giovannyi</a></h2>
+                            <span>DESARROLLADOR</span>
+                        </div>
+                    </div>
+                    <div class="ceb-item">
+                        <a href="{{route('single', 9)}}"><img width="270px" height="400px" src="{{asset('https://scontent.fcjs3-1.fna.fbcdn.net/v/t1.6435-1/118307767_10224132469765979_2795938537660321232_n.jpg?stp=dst-jpg_s200x200&_nc_cat=107&ccb=1-5&_nc_sid=7206a8&_nc_ohc=zflmviYjocUAX8EAWCN&_nc_ht=scontent.fcjs3-1.fna&oh=00_AT8drtNTkmO6D1C4YnsoH305RQSOuPkrArPN5JWkuho8jQ&oe=62518BD5')}}" alt="FOTO DE GIT2"></a>
+                        <div class="ceb-infor">
+                            <h2><a href="{{route('single', 9)}}">Luis</a></h2>
+                            <span>DESARROLLADOR</span>
+                        </div>
+                    </div>
+                    <div class="ceb-item">
+                        <a href="{{route('single', 8)}}"><img width="270px" height="400px" src="{{asset('https://scontent.fcjs3-2.fna.fbcdn.net/v/t1.6435-1/188103508_5482638751806075_8270445548026025041_n.jpg?stp=dst-jpg_p200x200&_nc_cat=111&ccb=1-5&_nc_sid=7206a8&_nc_ohc=r9B3mTgpUIUAX8hisfd&_nc_ht=scontent.fcjs3-2.fna&oh=00_AT8z4a2I4pKXm3ER_iWNCjlgzGBU8NDG2ajcYOOFx8yNTg&oe=62517E49')}}" alt="FOTO DE GIT2"></a>
+                        <div class="ceb-infor">
+                            <h2><a href="{{route('single', 8)}}">Maximiliano</a></h2>
                             <span>DESARROLLADOR</span>
                         </div>
                     </div>
