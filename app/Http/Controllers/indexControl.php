@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\calificacion_movie;
+use Illuminate\Support\Facades\Auth;
 use App\genero;
 use App\movies;
 use App\actores;
@@ -39,7 +40,7 @@ class indexControl extends Controller {
         if ($movie == null) {
             return redirect('/');
         }
-        if (auth()) {
+        if (Auth::check()) {
             $consulta = "SELECT * FROM like_movies WHERE idmovie =" . $movie->id . " AND idusuario =" . auth()->user()->id . ";";
             $resp = DB::select($consulta);
 

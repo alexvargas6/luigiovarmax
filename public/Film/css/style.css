@@ -1,4 +1,3 @@
-
 @media print {
     *,
     *:before,
@@ -6583,7 +6582,7 @@ ul {
 
 .common-hero {
     height: 385px;
-    background: url('../images/uploads/user-hero-bg.jpg') no-repeat;
+    background: url('../images/uploads/user-hero-bg.png') no-repeat;
 }
 
 .common-hero:before {
@@ -6592,7 +6591,7 @@ ul {
 
 .user-hero {
     height: 385px;
-    background: url('../images/uploads/user-hero-bg.jpg') no-repeat;
+    background: url('../images/uploads/user-hero-bg.png') no-repeat;
 }
 
 .user-hero .hero-ct {
@@ -6630,7 +6629,7 @@ ul {
 }
 
 .landing-hero {
-    background-image: url('../images/uploads/user-hero-bg.jpg');
+    background-image: url('../images/uploads/user-hero-bg.png');
     box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.5);
     text-align: center;
     padding: 110px 0;
@@ -7673,7 +7672,7 @@ ul {
 .celebrity-items .ceb-item span {
     font-family: 'Nunito', sans-serif;
     font-size: #abb7c4;
-    color: #abb7c4;
+    color: #000000;
     font-weight: 300;
     text-transform: uppercase;
 }
@@ -9478,7 +9477,7 @@ header#headerv3-light {
 }
 
 footer {
-    background: url('../images/uploads/ft-bg.jpg') no-repeat;
+    background: url('../images/uploads/ft-bg.png') no-repeat;
     background-position: center;
     background-size: cover;
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\user;
+use App\User;
 use DB;
 use Validator;
 
@@ -57,7 +57,7 @@ class perfilControl extends Controller
 
     public function singleProfile($id)
     {
-        $usuario = user::find($id);
+        $usuario = User::find($id);
         if (is_null($usuario)) {
 
             return redirect('/');

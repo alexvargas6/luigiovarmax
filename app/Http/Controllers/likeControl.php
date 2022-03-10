@@ -15,7 +15,7 @@ class likeControl extends Controller {
             'usuario' => 'required',
             'movie' => 'required',
             'calificacion' => 'required|numeric',
-            'comentario.required' => 'required'
+            'comentario' => 'required'
         ];
 
         $messages = [

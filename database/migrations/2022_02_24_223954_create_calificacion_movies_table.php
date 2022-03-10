@@ -18,7 +18,7 @@ class CreateCalificacionMoviesTable extends Migration
             $table->foreignId('usuario')->constrained('users');
             $table->foreignId('movie')->constrained('movies');
             $table->string('comentario')->nullable();
-            $table->string('titulo')->nullable();;
+            $table->string('titulo')->nullable();
             $table->integer('calificacion');
             $table->timestamps();
         });

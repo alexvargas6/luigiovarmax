@@ -2,7 +2,7 @@
 @section('titulo')
 DEVS
 @endsection
-@section('content')        
+@section('content')
 <!-- END | Header -->
 
 <div class="hero common-hero">
@@ -10,7 +10,7 @@ DEVS
         <div class="row">
             <div class="col-md-12">
                 <div class="hero-ct">
-                    <h1>celebrity listing - grid</h1>
+                    <h1>PROYECTO PARA IUP POR:</h1>
                     <ul class="breadcumb">
                         <li class="active"><a href="{{route('home')}}">Home</a></li>
                         <li> <span class="ion-ios-arrow-right"></span> DEVS</li>
@@ -43,10 +43,10 @@ DEVS
                 </div>
                 <div class="celebrity-items">
                     <div class="ceb-item">
-                        <a href="celebritysingle.html"><img src="{{asset('public/Film/images/uploads/ceb1.jpg')}}" alt=""></a>
+                        <a href="{{route('single', 1)}}"><img width="270px" height="400px" src="{{asset('public/Film/images/uploads/ceb1.jpg')}}" alt="FOTO DE GIT"></a>
                         <div class="ceb-infor">
-                            <h2><a href="celebritylist.html">Tom Hardy</a></h2>
-                            <span>actor, usa</span>
+                            <h2><a href="{{route('single', 1)}}">VARGAS</a></h2>
+                            <span>DESARROLLADOR</span>
                         </div>
                     </div>
                 </div>

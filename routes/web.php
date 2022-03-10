@@ -40,7 +40,7 @@ Route::group(['prefix' => 'administrar'], function () {
     Route::get('/upload/director/pelicula/show', 'uploadControl@showDirMovie')->name('directorShow');
     Route::get('/media/show', 'uploadControl@showMedia')->name('mediaShow');
     Route::post('/media/foto/store', 'uploadControl@mediaStore')->name('storePicture');
-    Route::post('/media/video/store', 'uploadControl@videoStore')->name('storeVid'); 
+    Route::post('/media/video/store', 'uploadControl@videoStore')->name('storeVid');
 });
 
 Route::group(['prefix' => 'us'], function () {

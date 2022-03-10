@@ -37,6 +37,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Titulo</th>
                             <th>Portada</th>
                             <th>duración</th>
@@ -51,6 +52,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>ID</th>
                             <th>Titulo</th>
                             <th>Portada</th>
                             <th>duración</th>
@@ -66,6 +68,7 @@
                     <tbody>
                         @foreach ($movies as $mov)
                         <tr>
+                            <td>{{$mov->id}}</td>
                             <td>{{ $mov->titulo }}</td>
                             <td><img src="{{ asset($mov->portada) }}" alt="{{ $mov->titulo }}" width="70">
                             </td>
