@@ -57,6 +57,20 @@ Route::group(['prefix' => 'us'], function () {
     Route::post('/calificacion/usuario', 'likeControl@puntuarStore')->name('calificar');
 });
 
+Route::group(['prefix' => 'vargas'], function () {
+    Route::get('/home', 'vargasControl@menuShow')->name('menuVargas');
+    Route::get('/library', 'vargasControl@libShow')->name('libVar');
+    Route::get('/contacto', 'vargasControl@contactoShow')->name('contact');
+    Route::get('/book', 'vargasControl@bookShow')->name('bookShow');
+    Route::get('/about', 'vargasControl@aboutShow')->name('aboutS');
+    Route::get('/aboutme', 'vargasControl@aboutMeShow')->name('aboutm');
+    Route::post('/mensaje/store', 'vargasControl@insertar')->name('mandaMsj');
+    Route::get('/noEsc', 'vargasControl@noEsco')->name('escno');
+    Route::get('/licenciaturas', 'vargasControl@licenShow')->name('licS');
+     Route::get('/campus', 'vargasControl@campusShow')->name('campus');
+     Route::get('/docente', 'vargasControl@docente')->name('docente');
+});
+
 Auth::routes();
 
 Route::get('/home', function () {

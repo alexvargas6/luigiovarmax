@@ -29,6 +29,7 @@ class VerifyCsrfToken extends Middleware
         'us/like',
         'us/calificacion/usuario',
         'administrar/media/foto/store',
-        'administrar/media/video/store'
+        'administrar/media/video/store',
+        'vargas/mensaje/store'
     ];
 }
